@@ -46,15 +46,24 @@ class AuthController extends Controller
 
     public function register(Request $request){
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'username' => 'required|string|max:255',
+            'email' => 'required|string|max:255|unique:users',
+            'password' => 'required|string',
         ]);
-
+        // $user->username = $request->username ? $request->username : $user->name;
+        // $user->email = $request->email ? $request->email : $user->email;
+        // $user->gender = $request->gender ? $request->gender : $user->gender;
+        // $user->location = $request->location ? $request->location : $user->location;
+        // $user->dob = $request->dob ? $request->dob : $user->dob;
+        // $user->preference = $request->preference ? $request->preference : $user->preference;
         $user = User::create([
-            'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'gender' =>$request->gender,
+            'preference' =>  $request->preference,
+            'dob' => $request->dob,
+            'location' => $request->location
         ]);
 
         $token = Auth::login($user);
