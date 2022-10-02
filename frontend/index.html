@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Mate</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>SoulMate</h1>
+          <div class="signin-input">
+            <input type="text" placeholder="Username" id="signin-username">
+          </div>
+          <div class="signin-input">
+            <input type="text" placeholder="Password" id="signin-password">
+          </div>
+          <div class="signin-btn">
+            <button>Sign In</button>
+            <p id="signup-prompt">Don't have an account? <span id="signup-prompt-click">Register now.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pop up for signup -->
+    <div class="popup-container">
+      <section class="signup-container">
+        <div class="signup-header">
+          <div class="popup-back-btn">
+            <img src="./assets/images/back-btn.png" alt="">
+          </div>
+        </div>
+        <div class="signup-content">
+          <form action="#" id="signup-form">
+            <div class="signin-input">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name">
+            </div>
+            <div class="signin-input">
+              <label for="name">Surname</label>
+              <input type="text" name="surname" id="surname">
+            </div>
+            <div class="signin-input">
+              <label for="name">Email</label>
+              <input type="email" name="email" id="email">
+            </div>
+            <div class="signin-input">
+              <label for="name">Username</label>
+              <input type="text" name="username" id="username">
+            </div>
+            <div class="signin-input">
+              <label for="name">Password</label>
+              <input type="password" name="password" id="password">
+            </div>
+            <div class="signin-input">
+              <label for="dob">Date of birth</label>
+              <input type="date" name="dob" id="dob">
+            </div>
+            <div class="signin-input">
+              <label for="gender">Gender:</label>
+              <select name="gender" id="gender">
+                <option value="1">Female</option>
+                <option value="2">Male</option>
+              </select>
+              <label for="preference">Preference:</label>
+              <select name="preference" id="preference">
+                <option value="1">Female</option>
+                <option value="2">Male</option>
+              </select>
+            </div>
+            <div class="signin-input">
+              <label for="location">Location</label>
+              <input type="text" name="location" id="location">
+            </div>
+            <div class="signin-btn" id="popup-two-prompt">
+              <button>Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- popup for image and bio -->
+    <div class="popup-container">
+      <section class="signup-container-two">
+        <div class="signup-header">
+          <div class="popup-back-btn" id="biopicx">
+            <img src="./assets/images/back-btn.png" alt="">
+          </div>
+        </div>
+        <div class="signup-content-two">
+          <form action="#">
+            <input type="file" name="profile_picture" id="profile-image" style="display: none;">
+            <label for="profile-image" class="center-pic">
+                <div id="ppdiv" class="pop-pp">
+                </div>
+            </label>
+            <div class="signin-input textarea-input">
+              <label for="bio">Bio:</label>
+              <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+            </div>
+            <div class="signin-btn">
+              <button>Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <!-- <section class="signup-container-two">
+      <div class="signup-header">
+        <div class="popup-back-btn">
+          <img src="./assets/images/back-btn.png" alt="">
+        </div>
+      </div>
+      <div class="signup-content-two">
+        <form action="#">
+          <input type="file" name="profile_picture" id="profile-image" style="display: none;">
+          <label for="profile-image" class="center-pic">
+              <div id="ppdiv" class="pop-pp">
+              </div>
+          </label>
+          <div class="signin-input textarea-input">
+            <label for="bio">Bio:</label>
+            <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+          </div>
+          <div class="signin-btn">
+            <button>Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </section> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/landingpage.js"></script>
+</body>
+</html>
