@@ -45,6 +45,11 @@ function login(){
     axios.post(`${baseURL}/auth/login`,form)
     .then(res=>{
         console.log(res)
+        console.log(res.data)
+        const authorisation = res.data.authorisation
+        const user = res.data.user
+        localStorage.setItem('userID', parseInt(user.id))
+        localStorage.setItem('token', authorisation.token)
     })
     .catch(e=>{
         console.log(e);
