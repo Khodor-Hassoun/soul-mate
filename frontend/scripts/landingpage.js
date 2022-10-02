@@ -15,6 +15,20 @@ const signInEmail = document.getElementById('signin-email');
 const signInPassword = document.getElementById('signin-password')
 const signInBtn = document.getElementById('signin-button')
 
+// Variables for sign up
+const firstName = document.getElementById('name')
+const surname = document.getElementById('surname')
+const email = document.getElementById('email')
+const userName = document.getElementById('username')
+const password = document.getElementById('password')
+const dob = document.getElementById('dob')
+const gender = document.getElementById('gender')
+const preference = document.getElementById('preference')
+const location = document.getElementById('location')
+const profilePic = document.getElementById('profile-image')
+const bio = document.getElementById('bio')
+const bioPicForm = document.getElementById('bioPicForm')
+
 
 signUpForm.addEventListener('submit',(e)=>{
     e.preventDefault()
@@ -54,4 +68,8 @@ function login(){
     .catch(e=>{
         console.log(e);
     })
+}
+
+function signup(){
+
 }
