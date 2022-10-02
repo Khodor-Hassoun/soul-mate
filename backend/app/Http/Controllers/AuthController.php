@@ -99,4 +99,44 @@ class AuthController extends Controller
         ]);
     }
 
+    public function update(Request $request, $id){
+        $user = User::find($id);
+        if(!isset($user->password) || empty($user->password)){
+            $user->password = $user->password;
+        }else{
+            $user->password = bcrypt($request->password);
+        }
+        $user->username = $request->username ? $request->username : $user->name;
+        $user->email = $request->email ? $request->email : $user->email;
+        $user->gender = $request->gender ? $request->gender : $user->gender;
+        $user->location = $request->location ? $request->location : $user->location;
+        $user->dob = $request->dob ? $request->dob : $user->dob;
+        $user->preference = $request->preference ? $request->preference : $user->preference;
+        
+        if($user->save()){
+            $token = Auth::login($user);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'User created successfully',
+                'user' => $user,
+                'authorisation' => [
+                    'token' => $token,
+                    'type' => 'bearer',
+                ]
+                
+            ]);
+        }
+        
+        
+        // $token = Auth::login($user);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'message' => 'User created successfully',
+        //     'user' => $user,
+            // 'authorisation' => [
+            //     'token' => $token,
+            //     'type' => 'bearer',
+            // ]
+        // ]);
+    }
 }

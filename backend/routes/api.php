@@ -23,7 +23,9 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('register', [AuthController::class, 'register']);
+    Route::post('/update/{id}', [AuthController::class, 'update']);
     Route::post('me', 'AuthController@me');
+
 
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
