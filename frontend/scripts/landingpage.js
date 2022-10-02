@@ -24,7 +24,7 @@ const password = document.getElementById('password')
 const dob = document.getElementById('dob')
 const gender = document.getElementById('gender')
 const preference = document.getElementById('preference')
-const location = document.getElementById('location')
+const locationUser = document.getElementById('location')
 const profilePic = document.getElementById('profile-image')
 const bio = document.getElementById('bio')
 const bioPicForm = document.getElementById('bioPicForm')
@@ -32,6 +32,7 @@ const bioPicForm = document.getElementById('bioPicForm')
 
 signUpForm.addEventListener('submit',(e)=>{
     e.preventDefault()
+    signup();
 })
 
 signupPrompt.addEventListener('click',()=>{
@@ -71,5 +72,26 @@ function login(){
 }
 
 function signup(){
+    const form = new FormData()
+    form.append('first_name',firstName.value)
+    form.append('surname',surname.value)
+    form.append('email',email.value)
+    form.append('username',userName.value)
+    form.append('password',password.value)
+    form.append('dob', dob.value)
+    form.append('gender',parseInt(gender.value))
+    form.append('preference',parseInt(preference.value))
+    form.append('location',locationUser.value)
 
+    axios.post(`${baseURL}/auth/register`,form)
+    .then(res=>{
+        console.log(res)
+        const authorisation = res.data.authorisation
+        const user = res.data.user
+        localStorage.setItem('userID', parseInt(user.id))
+        localStorage.setItem('token', authorisation.token)
+    })
+    .catch(e=>[
+        console.log(e)
+    ])
 }
