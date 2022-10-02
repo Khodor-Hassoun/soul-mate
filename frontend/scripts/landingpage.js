@@ -10,7 +10,10 @@ const bioPicPrompt = document.getElementById('popup-two-prompt');
 const bioPicBackBtn = document.querySelector('#biopicx')
 
 const baseURL = 'http://localhost:8000/api'
-
+// Variables for sign in
+const signInEmail = document.getElementById('signin-email');
+const signInPassword = document.getElementById('signin-password')
+const signInBtn = document.getElementById('signin-button')
 
 
 signUpForm.addEventListener('submit',(e)=>{
@@ -31,7 +34,19 @@ bioPicBackBtn.addEventListener('click',()=>{
     bioPicContainer.classList.remove('show')
 })
 
-axios.get(`${baseURL}/users`)
-.then(res=>{
-    console.log(res.data.data)
-})
+// Login http://localhost:8000/api/auth/login Post request
+signInBtn.addEventListener('click',login);
+
+
+function login(){
+    const form = new FormData()
+    form.append('email', signInEmail.value)
+    form.append('password',signInPassword.value)
+    axios.post(`${baseURL}/auth/login`,form)
+    .then(res=>{
+        console.log(res)
+    })
+    .catch(e=>{
+        console.log(e);
+    })
+}
