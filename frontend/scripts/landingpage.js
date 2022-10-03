@@ -24,14 +24,30 @@ const password = document.getElementById('password')
 const dob = document.getElementById('dob')
 const gender = document.getElementById('gender')
 const preference = document.getElementById('preference')
-const location = document.getElementById('location')
+const locationUser = document.getElementById('location')
 const profilePic = document.getElementById('profile-image')
 const bio = document.getElementById('bio')
 const bioPicForm = document.getElementById('bioPicForm')
+const profilePicDiv = document.querySelector('.pop-pp')
+let image64 = ''
+
+profilePic.addEventListener('change',()=>{
+    const file = profilePic.files[0]
+    const reader = new FileReader()
+
+    reader.addEventListener('load',()=>{
+        console.log(reader.result)
+        profilePicDiv.src= `${reader.result}`
+        image64 = reader.result
+    })
+
+    reader.readAsDataURL(file)
+})
 
 
 signUpForm.addEventListener('submit',(e)=>{
     e.preventDefault()
+    // signup();
 })
 
 signupPrompt.addEventListener('click',()=>{
@@ -50,7 +66,10 @@ bioPicBackBtn.addEventListener('click',()=>{
 
 // Login http://localhost:8000/api/auth/login Post request
 signInBtn.addEventListener('click',login);
-
+bioPicForm.addEventListener('submit', e=>{
+    e.preventDefault()
+    update()
+})
 
 function login(){
     const form = new FormData()
@@ -71,5 +90,46 @@ function login(){
 }
 
 function signup(){
+    const form = new FormData()
+    form.append('first_name',firstName.value)
+    form.append('surname',surname.value)
+    form.append('email',email.value)
+    form.append('username',userName.value)
+    form.append('password',password.value)
+    form.append('dob', dob.value)
+    form.append('gender',parseInt(gender.value))
+    form.append('preference',parseInt(preference.value))
+    form.append('location',locationUser.value)
 
+    axios.post(`${baseURL}/auth/register`,form)
+    .then(res=>{
+        console.log(res)
+        const authorisation = res.data.authorisation
+        const user = res.data.user
+        localStorage.setItem('userID', parseInt(user.id))
+        localStorage.setItem('token', authorisation.token)
+    })
+    .catch(e=>[
+        console.log(e)
+    ])
+}
+
+// second onclick update image and bio
+function update(){
+    const userID = localStorage.getItem('userID')
+    const token = localStorage.getItem('token')
+    const form = new FormData()
+    form.append('profile_picture',image64)
+    form.append('bio',bio.value)
+    axios.post(`${baseURL}/auth/update/${userID}`,form,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(res=>{
+        console.log(res)
+    })
+    .catch(e=>{
+        console.log(e)
+    })
 }
