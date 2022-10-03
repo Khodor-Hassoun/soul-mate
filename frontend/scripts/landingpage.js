@@ -28,11 +28,26 @@ const locationUser = document.getElementById('location')
 const profilePic = document.getElementById('profile-image')
 const bio = document.getElementById('bio')
 const bioPicForm = document.getElementById('bioPicForm')
+const profilePicDiv = document.querySelector('.pop-pp')
+let image64 = ''
+
+profilePic.addEventListener('change',()=>{
+    const file = profilePic.files[0]
+    const reader = new FileReader()
+
+    reader.addEventListener('load',()=>{
+        console.log(reader.result)
+        profilePicDiv.src= `${reader.result}`
+        image64 = reader.result
+    })
+
+    reader.readAsDataURL(file)
+})
 
 
 signUpForm.addEventListener('submit',(e)=>{
     e.preventDefault()
-    signup();
+    // signup();
 })
 
 signupPrompt.addEventListener('click',()=>{
@@ -51,7 +66,10 @@ bioPicBackBtn.addEventListener('click',()=>{
 
 // Login http://localhost:8000/api/auth/login Post request
 signInBtn.addEventListener('click',login);
-
+bioPicForm.addEventListener('submit', e=>{
+    e.preventDefault()
+    update()
+})
 
 function login(){
     const form = new FormData()
@@ -94,4 +112,24 @@ function signup(){
     .catch(e=>[
         console.log(e)
     ])
+}
+
+// second onclick update image and bio
+function update(){
+    const userID = localStorage.getItem('userID')
+    const token = localStorage.getItem('token')
+    const form = new FormData()
+    form.append('profile_picture',image64)
+    form.append('bio',bio.value)
+    axios.post(`${baseURL}/auth/update/${userID}`,form,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(res=>{
+        console.log(res)
+    })
+    .catch(e=>{
+        console.log(e)
+    })
 }

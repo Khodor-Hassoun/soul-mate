@@ -146,7 +146,7 @@ a:hover{
     opacity: 1;
 }
 .pop-pp{
-    background-image: url('../assets/images/Sample_User_Icon.png');
+    /* background-image: url('../assets/images/Sample_User_Icon.png'); */
     background-position: center;
     background-size: cover;
     width: 15vw;
