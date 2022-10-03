@@ -151,25 +151,18 @@ class AuthController extends Controller
         // $file = $folderPath . $uniqid . '.'.$image_type;
         // file_put_contents($file, $image_base64);
 
-        define('UPLOAD_DIR', 'public/images/');
-        $img = $request->profile_pic;
-        $img = str_replace('data:image/png;base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $data = base64_decode($img);
-        $file = UPLOAD_DIR . uniqid() . '.png';
-        $images_to_save = "/htdocs/soul-mate/".$file;
-        $success = file_put_contents($file, $data);
+
         // $newImage = time().'-'.$request->username.'-'.$request->profile_picture->extension();
         // $request->profile_picture->move(public_path('images'),$newImage);
         // dd($newImage);
 
-        $user->username = $request->username ? $request->username : $user->name;
+        $user->username = $request->username ? $request->username : $user->username;
         $user->email = $request->email ? $request->email : $user->email;
         $user->gender = $request->gender ? $request->gender : $user->gender;
         $user->location = $request->location ? $request->location : $user->location;
         $user->dob = $request->dob ? $request->dob : $user->dob;
         $user->preference = $request->preference ? $request->preference : $user->preference;
-        $user->profile_picture = $file;
+        $user->profile_picture = $request->profile_picture ? $request->profile_picture : $user->profile_picture;
         $user->bio = $request->bio ? $request->bio : $user->bio;
 
         
