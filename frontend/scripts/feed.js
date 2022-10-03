@@ -9,7 +9,7 @@ const feedContainer = document.querySelector('.feed-container')
 const baseURL = 'http://localhost:8000/api'
 // ${localStorage.getItem(userID)}
 
-axios.get(`${baseURL}/feed/18`)
+axios.get(`${baseURL}/feed/5`)
 .then(res=>{
     // console.log(res.data)
     for(let user of res.data.data){
@@ -24,8 +24,7 @@ axios.get(`${baseURL}/feed/18`)
         image.src = `${user.profile_picture}`
 
         userImage.append(image);
-        // userCard.append(userImage)
-        // feedContainer.append(userCard)
+
         // User content
         const userContent = document.createElement('div')
         userContent.classList.add('user-content')

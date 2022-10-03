@@ -49,6 +49,7 @@ class UserController extends Controller
     
     // Get users except blocked
     function getUsers($id){
+        $user = User::find($id);
         $blockedUsers = Block::
                         where('sender_id', '=', $id)
                         ->select('receiver_id')
@@ -57,6 +58,7 @@ class UserController extends Controller
         $users = DB::table('users')
             ->whereNotIn('id', $blockedUsers)
             ->where('id' , '!=', $id)
+            ->where('gender', $user->preference)
             // ->orWhereNot('id',$id)
             ->get();
 
