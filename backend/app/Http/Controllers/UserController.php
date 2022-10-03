@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Block;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Like;
@@ -11,13 +12,13 @@ class UserController extends Controller
 {
     //
     // Get all users
-    function getUsers(){
-        $users = User::all();
-        return response()->json([
-            "status" => "Success",
-            "data" => $users
-        ]);
-    }
+    // function getUsers(){
+    //     $users = User::all();
+    //     return response()->json([
+    //         "status" => "Success",
+    //         "data" => $users
+    //     ]);
+    // }
 
     // Get user but favorites
     function getFavorites($id){
@@ -46,4 +47,21 @@ class UserController extends Controller
         ]);
     }
     
+    // Get users except blocked
+    function getUsers($id){
+        $blockedUsers = Block::
+                        where('sender_id', '=', $id)
+                        ->select('receiver_id')
+                        ->get()->toArray();
+
+        $users = DB::table('users')
+            ->whereNotIn('id', $blockedUsers)
+            ->get();
+
+
+        return response()->json([
+            "status" => "Success",
+            "data" => $users
+        ]);
+    }
 }
