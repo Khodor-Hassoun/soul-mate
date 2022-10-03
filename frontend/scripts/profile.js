@@ -6,7 +6,18 @@ const signupBackBtn = document.querySelector('.popup-back-btn');
 const passwPop = document.querySelector('.popup-container');
 const feedContainer = document.querySelector('.feed-container')
 const baseURL = 'http://localhost:8000/api'
-
+const firstName = document.getElementById('name')
+const surname = document.getElementById('surname')
+const email = document.getElementById('email')
+const userName = document.getElementById('username')
+const password = document.getElementById('password')
+const dob = document.getElementById('dob')
+const gender = document.getElementById('gender')
+const preference = document.getElementById('preference')
+const locationUser = document.getElementById('location')
+const profilePic = document.getElementById('profile-image')
+const bio = document.getElementById('bio')
+const userImage = document.getElementById('user-image')
 editProfileButton.addEventListener('click',()=>{
     profileImage.classList.add('show-edit')
     profileInfo.classList.add('show-edit')
@@ -16,8 +27,17 @@ editProfileButton.addEventListener('click',()=>{
 signupBackBtn.addEventListener('click',()=>{
     passwPop.classList.remove('show')
 })
+axios.get(`${baseURL}/feed/18`)
+.then(res=>{
+    const user = res.data.page_user
+    firstName.value = user.first_name
+    surname.value = user.last_name
+    email.value = user.email
+    dob.value = user.dob
+    userImage.src = user.profile_picture
+})
 
-axios.get(`${baseURL}/profile/4`)
+axios.get(`${baseURL}/profile/18`)
 .then(res=>{
     for(let user of res.data.data){
         console.log(user)

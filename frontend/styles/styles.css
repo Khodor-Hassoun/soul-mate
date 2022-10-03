@@ -271,7 +271,7 @@ a:hover{
 .user-profile-image{
     width: 30%;
     height: 100%;
-    pointer-events: none;
+    /* pointer-events: none; */
 
 }
 .user-profile-image img{
@@ -280,11 +280,11 @@ a:hover{
 
 }
 .user-profile-info{
-    pointer-events: none;
+    /* pointer-events: none; */
     opacity: 0.2;
 }
 .user-profile-preferences{
-    pointer-events: none;
+    /* pointer-events: none; */
     opacity: 0.2;
 }
 .password-popup{
