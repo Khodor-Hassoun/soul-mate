@@ -15,6 +15,7 @@ body {
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -178,4 +179,79 @@ a:hover{
 .textarea-input{
     display: flex;
     flex-direction: column;
+}
+
+/* feed page */
+.feed-navbar{
+    display: flex;
+    width: 100vw;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fd326c;
+    padding: 0 50px;
+}
+
+.navbar-feed-right{
+    display: flex;
+    justify-content: flex-end;
+    /* width: 30%; */
+}
+
+.navbar-feed-right-profile{
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
+.navbar-feed-right-profile img{
+    width: 100%;
+    height: 100%;
+}
+
+.user-card{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    margin: 10px 15px;
+    border-color: black;
+    border-radius: 5px;
+    border: 1px solid;
+    /* flex-basis: 1; */
+}
+.user-image{
+    width: 100%;
+    height: 300px;
+
+    
+}
+.user-image img{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.user-content{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 150px;
+}
+.user-content >*{
+    margin: 3px 0;
+}
+.user-content-name-age{
+    display: flex;
+    align-items: center;
+}
+.user-content-name-age h2{
+    margin-right: 5px;
+}
+
+.feed-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 10px 20px;
 }

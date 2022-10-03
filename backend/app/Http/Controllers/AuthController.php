@@ -146,18 +146,25 @@ class AuthController extends Controller
 
 
         
-        $img = $request->profile_picture;
-        $folderPath = "public\images"; //path location
+        // $img = $request->profile_picture;
+        // $folderPath = "public\images"; //path location
         
-        $image_parts = explode(";base64,", $img);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        $image_base64 = base64_decode($image_parts[1]);
-        $uniqid = uniqid();
-        $file = $folderPath . $uniqid . '.'.$image_type;
-        file_put_contents($file, $image_base64);
+        // $image_parts = explode(";base64,", $img);
+        // $image_type_aux = explode("image/", $image_parts[0]);
+        // $image_type = $image_type_aux[1];
+        // $image_base64 = base64_decode($image_parts[1]);
+        // $uniqid = uniqid();
+        // $file = $folderPath . $uniqid . '.'.$image_type;
+        // file_put_contents($file, $image_base64);
 
-
+        define('UPLOAD_DIR', 'public/images/');
+        $img = $request->profile_pic;
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $file = UPLOAD_DIR . uniqid() . '.png';
+        $images_to_save = "/htdocs/soul-mate/".$file;
+        $success = file_put_contents($file, $data);
         // $newImage = time().'-'.$request->username.'-'.$request->profile_picture->extension();
         // $request->profile_picture->move(public_path('images'),$newImage);
         // dd($newImage);
