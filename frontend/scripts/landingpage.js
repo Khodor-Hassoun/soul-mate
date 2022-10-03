@@ -47,7 +47,7 @@ profilePic.addEventListener('change',()=>{
 
 signUpForm.addEventListener('submit',(e)=>{
     e.preventDefault()
-    // signup();
+    signup();
 })
 
 signupPrompt.addEventListener('click',()=>{
