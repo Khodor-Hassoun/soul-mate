@@ -7,11 +7,18 @@ const userLogoutButton = document.getElementById('user-logout-pic')
 const feedContainer = document.querySelector('.feed-container')
 
 const baseURL = 'http://localhost:8000/api'
-// ${localStorage.getItem(userID)}
 
-axios.get(`${baseURL}/feed/5`)
+// ${localStorage.getItem(userID)}
+axios.get(`${baseURL}/feed/18`)
 .then(res=>{
-    // console.log(res.data)
+    console.log(res.data.page_user)
+    userProfileButton.src = res.data.page_user.profile_picture
+    userProfileButton.addEventListener('click',()=>{
+        localStorage.getItem('userID')
+        localStorage.getItem('token')
+        // window.location.replace('index.html')
+    })
+    // User cards
     for(let user of res.data.data){
         console.log(user)
         const userCard = document.createElement('div')
@@ -35,7 +42,15 @@ axios.get(`${baseURL}/feed/5`)
         p1.innerHTML = `<h2>${user.username}</h2>`
         
         const p2 = document.createElement('p')
-        p2.innerHTML = `<h2>,${user.dob}</h2>`
+
+        // Calculate age
+        const birthday = new Date(user.dob)
+        let ageDifMs = Date.now() - birthday.getTime();
+        let ageDate = new Date(ageDifMs); // miliseconds from epoch
+        const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+
+        p2.innerHTML = `<h2>,${age}</h2>`
 
         userConNA.append(p1)
         userConNA.append(p2)
@@ -54,7 +69,13 @@ axios.get(`${baseURL}/feed/5`)
         userCard.append(userContent)
         feedContainer.append(userCard)
 
+        userCard.setAttribute('guestID', user.id)
+        userCard.addEventListener('click', ()=>{
+            console.log(`I'm ${userCard.getAttribute('guestID')}`)
+        })
 
 
     }
 })
+
+// axios.get()
