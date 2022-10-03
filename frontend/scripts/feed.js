@@ -5,7 +5,11 @@ const userLogoutButton = document.getElementById('user-logout-pic')
 
 // feed container 
 const feedContainer = document.querySelector('.feed-container')
-
+userLogoutButton.addEventListener('click',()=>{
+    localStorage.removeItem('userID')
+    localStorage.removeItem('token')
+    window.location.replace('index.html')
+})
 const baseURL = 'http://localhost:8000/api'
 
 // ${localStorage.getItem(userID)}
@@ -73,7 +77,6 @@ axios.get(`${baseURL}/feed/18`)
         userCard.addEventListener('click', ()=>{
             console.log(`I'm ${userCard.getAttribute('guestID')}`)
         })
-
 
     }
 })
