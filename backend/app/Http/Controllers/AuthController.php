@@ -52,12 +52,6 @@ class AuthController extends Controller
         ]);
 
 
-        // $user->username = $request->username ? $request->username : $user->name;
-        // $user->email = $request->email ? $request->email : $user->email;
-        // $user->gender = $request->gender ? $request->gender : $user->gender;
-        // $user->location = $request->location ? $request->location : $user->location;
-        // $user->dob = $request->dob ? $request->dob : $user->dob;
-        // $user->preference = $request->preference ? $request->preference : $user->preference;
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,

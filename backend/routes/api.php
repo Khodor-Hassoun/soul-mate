@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +30,8 @@ Route::group([
 
 
 });
+Route::get('/feed', [UserController::class, 'getUsers']);
+Route::get('/profile/{id}', [UserController::class, 'getFavorites']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
