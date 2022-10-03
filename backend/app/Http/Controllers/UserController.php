@@ -56,6 +56,8 @@ class UserController extends Controller
 
         $users = DB::table('users')
             ->whereNotIn('id', $blockedUsers)
+            ->where('id' , '!=', $id)
+            // ->orWhereNot('id',$id)
             ->get();
 
 

@@ -9,7 +9,7 @@ const feedContainer = document.querySelector('.feed-container')
 const baseURL = 'http://localhost:8000/api'
 // ${localStorage.getItem(userID)}
 
-axios.get(`${baseURL}/feed/15`)
+axios.get(`${baseURL}/feed/18`)
 .then(res=>{
     // console.log(res.data)
     for(let user of res.data.data){
