@@ -193,6 +193,7 @@ axios.get(`${baseURL}/feed/${localStorage.getItem('userID')}`)
                         if(res.data.status === 'success')
                             blockBtn.textContent = 'Blocked'
                             blockBtn.style.backgroundColor = '#e63946'
+                            window.location.reload()
                     })
                 })
                 messageBtn.addEventListener('click',()=>{
