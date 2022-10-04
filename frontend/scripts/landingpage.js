@@ -124,7 +124,7 @@ function update(){
     form.append('profile_picture',image64)
     form.append('bio',bio.value)
     form.append('hidden',0)
-    form.append('password','')
+    form.append('password',null)
 
     axios.post(`${baseURL}/auth/update/${userID}`,form,{
         headers: {
@@ -132,7 +132,7 @@ function update(){
         }
     })
     .then(res=>{
-        console.log(res)
+        console.log(res.data)
         window.location.replace('feed.html')
     })
     .catch(e=>{

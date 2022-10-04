@@ -20,7 +20,8 @@ axios.get(`${baseURL}/feed/${localStorage.getItem('userID')}`)
     userProfileButton.addEventListener('click',()=>{
         localStorage.getItem('userID')
         localStorage.getItem('token')
-        window.location.replace('profile.html')
+        // window.location.replace('profile.html')
+        window.open('profile.html', '_self')
     })
     // User cards
     for(let user of res.data.data){
@@ -198,6 +199,9 @@ axios.get(`${baseURL}/feed/${localStorage.getItem('userID')}`)
                 })
                 messageBtn.addEventListener('click',()=>{
                     console.log('hello message')
+                    localStorage.setItem('guestID', parseInt(guestUser.id))
+                    window.open('chat.html', '_self')
+
                 })
             })
         })

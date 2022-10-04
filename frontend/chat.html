@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed</title>
+    <title>Chat</title>
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
-<body>
-    <!-- Navbar -->
+<body class="chat-body">
     <nav class="feed-navbar">
         <div class="navbar-feed-left">
             <h1 class="navbar-logo">SoulMate</h1>
@@ -25,28 +24,24 @@
             </div>
         </div>
     </nav>
-    <section class="feed-container">
 
-        <!-- Card Design that was used in js -->
-        <!-- <div class="user-card">
-            <div class="user-image">
-                <img src="./assets/images/wilmer-martinez-Lme2Ye2jVo8-unsplash.jpg" alt="">
-            </div>
-            <div class="user-content">
-                <div class="user-content-name-age">
-                    <h2>Martinez</h2>
-                    <h2>,26</h2>
+    <section class="chat-container">
+        <div class="chat-content">
+
+            <!-- Below is the code that I built the dynamic message from -->
+            <!-- <div class="message-container user-message">
+                <div class="message-box user-message">
+                    <P>Hello</P>
                 </div>
-                <div class="user-content-location">
-                    <p>USA, new mexico</p>
-                </div>
-            </div>
-        </div>    -->
-
-
+            </div>   -->
+        </div>
+        <div class="message-input">
+            <input type="text" name="message" id="message">
+            <button id="send-btn">Send</button>
+        </div>
     </section>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./scripts/feed.js"></script>
+    <script src="./scripts/chat.js"></script>
 </body>
 </html>

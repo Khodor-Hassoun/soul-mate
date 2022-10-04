@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Block;
+use App\Models\Chat;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Like;
@@ -47,7 +48,6 @@ class UserController extends Controller
             ->whereNotIn('id', $blockedUsers)
             ->where('id' , '!=', $id)
             ->where('gender', $user->preference)
-            // ->orWhereNot('id',$id)
             ->get();
 
 
@@ -94,5 +94,41 @@ class UserController extends Controller
                 'status' => 'Fail'
             ]);
         }
+    }
+
+    function addMessage(Request $request){
+        $chat = new Chat;
+        $chat->sender_id = $request->sender_id;
+        $chat->receiver_id = $request->receiver_id;
+        $chat->message = $request->message;
+        if($chat->save()){
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'Fail'
+            ]);
+        }
+    }
+
+    function getMessages(Request $request, $id){
+        $userID = $id;
+        $receiver_id = $request->receiver_id;
+        $messages = Chat::where('sender_id', $id)
+            ->where('receiver_id', $request->receiver_id)
+            ->orWhere(function ($query) use ($userID, $receiver_id) {
+                $query->where('sender_id', $receiver_id)
+                    ->where('receiver_id', $userID);
+            })
+            ->get();
+
+
+        return response()->json([
+            "status" => "Success",
+            "data" => $messages
+        ]);
+
+        
     }
 }

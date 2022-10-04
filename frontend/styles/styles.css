@@ -218,8 +218,9 @@ a:hover{
     height: 400px;
     margin: 10px 15px;
     border-color: black;
-    border-radius: 5px;
+    border-radius: 15px;
     border: 1px solid;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     /* flex-basis: 1; */
 }
 .user-image{
@@ -234,6 +235,7 @@ a:hover{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 15px 15px 0 0;
 }
 .user-content{
     display: flex;
@@ -355,6 +357,54 @@ a:hover{
     height: 15px;
     width: 15px;
 }
+
+
+/* Chat Page */
+
+.chat-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    background-color: black;
+    /* width: 600px; */
+
+}
+.chat-content{
+    width: 700px;
+    border-radius: 10px;
+}
+.message-box{
+    background-color: #84a98c;
+    width: 50%;
+    padding: 5px 2px;
+    margin: 5px 0;
+}
+
+.user-message{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-input{
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+}
+.message-input input{
+    flex-grow: 1;
+}
+
+
 @media screen and (max-width:1050px){
     .feed-container{
         justify-content: center;
