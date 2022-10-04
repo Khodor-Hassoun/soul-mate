@@ -319,6 +319,7 @@ a:hover{
     /* height: 600px; */
     height: max-content;
     width: 600px;
+    background-color: #fff;
 }
 .guest-user-image{
     /* height: 500px; */
@@ -342,8 +343,18 @@ a:hover{
 .user-buttons button{
     padding: 5px 15px;
     border-radius: 50px;
+    cursor: pointer;
 }
-
+.back-btn{
+    display: flex;
+    margin-right: 20px;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.back-btn img{
+    height: 15px;
+    width: 15px;
+}
 @media screen and (max-width:1050px){
     .feed-container{
         justify-content: center;

@@ -69,4 +69,12 @@ class UserController extends Controller
             'page_user' => $user
         ]);
     }
+
+    function getUser($id){
+        $viewUser = User::find($id);
+        return response()->json([
+            "status" => "Success",
+            "data" => $viewUser
+        ]);
+    }
 }

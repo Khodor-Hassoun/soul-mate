@@ -32,6 +32,7 @@ Route::group([
 });
 Route::get('/feed/{id}', [UserController::class, 'getUsers']);
 Route::get('/profile/{id}', [UserController::class, 'getFavorites']);
+Route::get('/view/{id}', [UserController::class, 'getUser']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
