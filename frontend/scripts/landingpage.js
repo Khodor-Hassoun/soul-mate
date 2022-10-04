@@ -123,6 +123,9 @@ function update(){
     const form = new FormData()
     form.append('profile_picture',image64)
     form.append('bio',bio.value)
+    form.append('hidden',0)
+    form.append('password','')
+
     axios.post(`${baseURL}/auth/update/${userID}`,form,{
         headers: {
           'Authorization': `Bearer ${token}`
