@@ -172,11 +172,28 @@ axios.get(`${baseURL}/feed/${localStorage.getItem('userID')}`)
                 feedContainer.append(guestUserContainer)
 
                 likeBtn.addEventListener('click',()=>{
-                    console.log('hello like')
+                    const form = new FormData()
+                    console.log(parseInt(guestUser.id))
+                    form.append('sender_id',localStorage.getItem('userID'))
+                    form.append('receiver_id', parseInt(guestUser.id))
+                    axios.post(`${baseURL}/like`,form)
+                    .then(res=>{
+                        if(res.data.status === 'success')
+                            likeBtn.textContent = 'Liked!'
+                            likeBtn.style.backgroundColor = '#2a9d8f'
+                    })
                 })
 
                 blockBtn.addEventListener('click',()=>{
-                    console.log('hello block')
+                    const form = new FormData()
+                    form.append('sender_id',parseInt(localStorage.getItem('userID')))
+                    form.append('receiver_id', parseInt(guestUser.id))
+                    axios.post(`${baseURL}/block`,form)
+                    .then(res=>{
+                        if(res.data.status === 'success')
+                            blockBtn.textContent = 'Blocked'
+                            blockBtn.style.backgroundColor = '#e63946'
+                    })
                 })
                 messageBtn.addEventListener('click',()=>{
                     console.log('hello message')
