@@ -17,12 +17,45 @@ const preference = document.getElementById('preference')
 const locationUser = document.getElementById('location')
 const profilePic = document.getElementById('profile-image')
 const bio = document.getElementById('bio')
-const userImage = document.getElementById('user-image')
+const userImageDisplay = document.getElementById('user-image')
+const ishidden = document.getElementById('hidden')
+const hiddenDiv = document.querySelector('.hidden-div')
+const profileEditBtn = document.getElementById('profile-edit')
+let image64 = ''
+
+const userPofileCon = document.querySelector('.user-profile-container')
+
+hiddenDiv.addEventListener('click',()=>{
+    if(ishidden.value == 1){
+        ishidden.value = 0
+        ishidden.checked = false
+    }else{
+        ishidden.value = 1
+        ishidden.checked = true
+    }
+})
+profilePic.addEventListener('change',()=>{
+    const file = profilePic.files[0]
+    const reader = new FileReader()
+
+    reader.addEventListener('load',()=>{
+        console.log(reader.result)
+        userImageDisplay.src= `${reader.result}`
+        image64 = reader.result
+    })
+
+    reader.readAsDataURL(file)
+})
+
+
+
+
 editProfileButton.addEventListener('click',()=>{
     profileImage.classList.add('show-edit')
     profileInfo.classList.add('show-edit')
     profilePreferences.classList.add('show-edit')
     passwPop.classList.add('show')
+    userPofileCon.classList.remove('hide-edit')
 })
 signupBackBtn.addEventListener('click',()=>{
     passwPop.classList.remove('show')
@@ -34,7 +67,11 @@ axios.get(`${baseURL}/feed/18`)
     surname.value = user.last_name
     email.value = user.email
     dob.value = user.dob
-    userImage.src = user.profile_picture
+    userImageDisplay.src = user.profile_picture
+    preference.value = user.preference
+    gender.value = user.gender
+    locationUser.value = user.location
+    userName.value = user.username
 })
 
 axios.get(`${baseURL}/profile/18`)
@@ -96,3 +133,35 @@ axios.get(`${baseURL}/profile/18`)
 
     }
 })
+
+
+// Update user
+function update(){
+    const userID = parseInt(localStorage.getItem('userID'))
+    const token = localStorage.getItem('token')
+    const form = new FormData()
+    form.append('first_name',firstName.value)
+    form.append('surname',surname.value)
+    form.append('email',email.value)
+    form.append('username',userName.value)
+    form.append('password',password.value)
+    form.append('dob', dob.value)
+    form.append('gender',parseInt(gender.value))
+    form.append('preference',parseInt(preference.value))
+    form.append('location',locationUser.value)
+    form.append('profile_picture',image64)
+    form.append('bio',bio.value)
+    axios.post(`${baseURL}/auth/update/${userID}`,form,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(res=>{
+        console.log(res)
+    })
+    .catch(e=>{
+        console.log(e)
+    })
+}
+
+profileEditBtn.addEventListener('click', update)
