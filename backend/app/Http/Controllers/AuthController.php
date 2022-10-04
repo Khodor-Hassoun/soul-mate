@@ -99,14 +99,6 @@ class AuthController extends Controller
 
     public function update(Request $request, $id){
         $user = User::find($id);
-        // if(!isset($user->password) || empty($user->password)){
-        //     $user->password = $user->password;
-        // }else{
-        //     $user->password = bcrypt($request->password);
-        // }
-        // if(!isset($request->password) || empty($request->password)){
-        //     $user->password = $user->password;
-        // }else $user->password = bcrypt($request->password);
 
         if($request->password == null){
             $user->password = $user->password;
