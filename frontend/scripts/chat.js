@@ -1,3 +1,5 @@
+const postMessage = document.getElementById('message')
+const sendBtn = document.getElementById('send-btn')
 const chatContent = document.querySelector('.chat-content')
 const baseURL = 'http://localhost:8000/api'
 
@@ -25,4 +27,18 @@ axios.post(`${baseURL}/message/7`, form)
         messageContainer.append(messageBox)
         chatContent.append(messageContainer)
     }
+})
+
+
+sendBtn.addEventListener('click',()=>{
+    const postM = new FormData()
+    postM.append('message', postMessage.value)
+    postM.append('sender_id',7) //LOCALSTORAGE
+    postM.append('receiver_id',10)
+    axios.post(`${baseURL}/message`,postM)
+    .then(res=>{
+        window.location.reload()
+        
+    })
+
 })
