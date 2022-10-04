@@ -218,7 +218,7 @@ a:hover{
     height: 400px;
     margin: 10px 15px;
     border-color: black;
-    border-radius: 5px;
+    border-radius: 15px;
     border: 1px solid;
     /* flex-basis: 1; */
 }
@@ -234,6 +234,7 @@ a:hover{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 15px;
 }
 .user-content{
     display: flex;

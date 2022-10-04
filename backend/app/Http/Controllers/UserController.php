@@ -48,7 +48,6 @@ class UserController extends Controller
             ->whereNotIn('id', $blockedUsers)
             ->where('id' , '!=', $id)
             ->where('gender', $user->preference)
-            // ->orWhereNot('id',$id)
             ->get();
 
 
@@ -116,14 +115,13 @@ class UserController extends Controller
     function getMessages(Request $request, $id){
         $userID = $id;
         $receiver_id = $request->receiver_id;
-        $messages = Chat::
-                    where('sender_id', $id)
-                    ->where('receiver_id', $request->receiver_id)
-                    ->orWhere(function($query) use ($userID, $receiver_id){
-                        $query->where('sender_id', $receiver_id)
-                                ->where('receiver_id', $userID);
-                    })
-                    ->get();
+        $messages = Chat::where('sender_id', $id)
+            ->where('receiver_id', $request->receiver_id)
+            ->orWhere(function ($query) use ($userID, $receiver_id) {
+                $query->where('sender_id', $receiver_id)
+                    ->where('receiver_id', $userID);
+            })
+            ->get();
 
 
         return response()->json([
