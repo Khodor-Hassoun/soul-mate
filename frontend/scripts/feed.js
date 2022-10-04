@@ -170,6 +170,17 @@ axios.get(`${baseURL}/feed/${localStorage.getItem('userID')}`)
                 guestUserCard.append(guestUserContent)
                 guestUserContainer.append(guestUserCard)
                 feedContainer.append(guestUserContainer)
+
+                likeBtn.addEventListener('click',()=>{
+                    console.log('hello like')
+                })
+
+                blockBtn.addEventListener('click',()=>{
+                    console.log('hello block')
+                })
+                messageBtn.addEventListener('click',()=>{
+                    console.log('hello message')
+                })
             })
         })
 
