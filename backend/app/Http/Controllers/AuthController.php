@@ -99,13 +99,18 @@ class AuthController extends Controller
 
     public function update(Request $request, $id){
         $user = User::find($id);
-        if(!isset($user->password) || empty($user->password)){
+        // if(!isset($user->password) || empty($user->password)){
+        //     $user->password = $user->password;
+        // }else{
+        //     $user->password = bcrypt($request->password);
+        // }
+        // if(!isset($request->password) || empty($request->password)){
+        //     $user->password = $user->password;
+        // }else $user->password = bcrypt($request->password);
+        if($request->password === ''){
             $user->password = $user->password;
-        }else{
-            $user->password = bcrypt($request->password);
-        }
-
-
+        }else $user->password = bcrypt($request->password);
+        
         $user->username = $request->username ? $request->username : $user->username;
         $user->email = $request->email ? $request->email : $user->email;
         $user->gender = $request->gender ? $request->gender : $user->gender;
@@ -114,6 +119,9 @@ class AuthController extends Controller
         $user->preference = $request->preference ? $request->preference : $user->preference;
         $user->profile_picture = $request->profile_picture ? $request->profile_picture : $user->profile_picture;
         $user->bio = $request->bio ? $request->bio : $user->bio;
+        $user->first_name = $request->first_name ? $request->first_name : $user->first_name;
+        $user->surname = $request->surname ? $request->surname : $user->surname;
+        $user->hidden = $request->hidden;
 
         
         if($user->save()){

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="feed-navbar">
+        <div class="navbar-feed-left">
+            <h1 class="navbar-logo">SoulMate</h1>
+        </div>
+        <div class="navbar-feed-right">
+            <div class="navbar-feed-right-profile">
+                <img src="./assets/images/edit.png" alt="" id="user-profile-pic">
+            </div>
+            <div class="navbar-feed-right-profile">
+                <img src="./assets/images/Comment-Transparent.png" alt="" id="user-chat-pic">
+            </div>
+            <div class="navbar-feed-right-profile">
+                <img src="./assets/images/126467.png" alt="" id="user-logout-pic">
+            </div>
+        </div>
+    </nav>
+
+    <!-- User profile -->
+    <section class="user-profile-container hide-edit">
+        <div class="user-profile-image">
+            <input type="file" name="profile_picture" id="profile-image" style="display: none;">
+            <label for="profile-image">
+                <img src="./assets/images/michael-dam-mEZ3PoFGs_k-unsplash.jpg" alt="" id="user-image">
+            </label>
+        </div>
+        <div class="user-profile-info">
+            <div class="signin-input">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="signin-input">
+                <label for="name">Surname</label>
+                <input type="text" name="surname" id="surname">
+            </div>
+            <div class="signin-input">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="signin-input">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="signin-input">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="signin-input">
+                <label for="dob">Date of birth</label>
+                <input type="date" name="dob" id="dob">
+            </div>
+        </div>
+        <div class="user-profile-preferences">
+            <div class="signin-input">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="1">Female</option>
+                    <option value="2">Male</option>
+                </select>
+            </div>
+            <div class="signin-input">
+                <label for="preference">Preference:</label>
+                <select name="preference" id="preference">
+                    <option value="1">Female</option>
+                    <option value="2">Male</option>
+                </select>
+            </div>
+            <div class="signin-input">
+                <label for="location">Location</label>
+                <input type="text" name="location" id="location">
+            </div>
+            <div class="signin-input textarea-input">
+                <label for="bio">Bio:</label>
+                <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+            </div>
+            <div class="signin-input hidden-div">
+                <label for="hide">Hide</label>
+                <input type="checkbox" name="hidden" id="hidden" value="0">
+            </div>
+            <div class="signin-btn">
+                <button id="profile-edit">Edit</button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="feed-container">
+
+        <!-- Card Design -->
+        <div class="user-card">
+            <div class="user-image">
+                <img src="./assets/images/wilmer-martinez-Lme2Ye2jVo8-unsplash.jpg" alt="">
+            </div>
+            <div class="user-content">
+                <div class="user-content-name-age">
+                    <h2>Martinez</h2>
+                    <h2>,26</h2>
+                </div>
+                <div class="user-content-location">
+                    <p>USA, new mexico</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Card Design -->
+        <div class="user-card">
+            <div class="user-image">
+                <img src="./assets/images/austin-wade-d2s8NQ6WD24-unsplash.jpg" alt="">
+            </div>
+            <div class="user-content">
+                <div class="user-content-name-age">
+                    <h2>Martinez</h2>
+                    <h2>,26</h2>
+                </div>
+                <div class="user-content-location">
+                    <p>USA, new mexico</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Card Design -->
+        <div class="user-card">
+            <div class="user-image">
+                <img src="./assets/images/michael-dam-mEZ3PoFGs_k-unsplash.jpg" alt="">
+            </div>
+            <div class="user-content">
+                <div class="user-content-name-age">
+                    <h2>Martinez</h2>
+                    <h2>,26</h2>
+                </div>
+                <div class="user-content-location">
+                    <p>USA, new mexico</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Card Design -->
+        <div class="user-card">
+            <div class="user-image">
+                <img src="./assets/images/srimathi-jayaprakash-hUdqWDP5h8A-unsplash.jpg" alt="">
+            </div>
+            <div class="user-content">
+                <div class="user-content-name-age">
+                    <h2>Martinez</h2>
+                    <h2>,26</h2>
+                </div>
+                <div class="user-content-location">
+                    <p>USA, new mexico</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="user-card">
+            <div class="user-image">
+                <img src="./assets/images/austin-wade-d2s8NQ6WD24-unsplash.jpg" alt="">
+            </div>
+            <div class="user-content">
+                <div class="user-content-name-age">
+                    <h2>Martinez</h2>
+                    <h2>,26</h2>
+                </div>
+                <div class="user-content-location">
+                    <p>USA, new mexico</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="popup-container">
+        <section class="password-popup">
+            <div class="signup-header">
+                <div class="popup-back-btn" id="biopicx">
+                    <img src="./assets/images/back-btn.png" alt="">
+                </div>
+            </div>
+            <div class="signin-input">
+                <label for="poppw">Password</label>
+                <input type="password" name="poppw" id="poppw">
+              </div>
+              <div class="signin-btn">
+                <button id>Verify</button>
+              </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/profile.js"></script>
+</body>
+</html>

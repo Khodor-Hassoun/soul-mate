@@ -10,23 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    //
-    // Get all users
-    // function getUsers(){
-    //     $users = User::all();
-    //     return response()->json([
-    //         "status" => "Success",
-    //         "data" => $users
-    //     ]);
-    // }
+
 
     // Get user but favorites
     function getFavorites($id){
-        // $users = DB::table('users')
-        //     ->join('likes', 'users.id', '=', 'likes.sender_id')
-        //     ->where('users.id', '=', $id)
-        //     ->select('')
-        //     ->get();
+
         $likedUsers = Like::
                         where('sender_id', '=', $id)
                         ->select('receiver_id')
@@ -68,5 +56,43 @@ class UserController extends Controller
             "data" => $users,
             'page_user' => $user
         ]);
+    }
+
+    function getUser($id){
+        $viewUser = User::find($id);
+        return response()->json([
+            "status" => "Success",
+            "data" => $viewUser
+        ]);
+    }
+
+    function likeUser(Request $request){
+        $like = new Like;
+        $like->sender_id = $request->sender_id;
+        $like->receiver_id = $request->receiver_id;
+        if($like->save()){
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'Fail'
+            ]);
+        }
+    }
+
+    function blockUser(Request $request){
+        $block = new Block;
+        $block->sender_id = $request->sender_id;
+        $block->receiver_id = $request->receiver_id;
+        if($block->save()){
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'Fail'
+            ]);
+        }
     }
 }

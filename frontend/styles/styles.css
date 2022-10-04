@@ -258,10 +258,113 @@ a:hover{
     justify-content: center;
     margin: 10px auto;
 }
+/* Profile page */
+.user-profile-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    height: 450px;
+    margin: 20px 0;
+    margin-bottom: 70px;
+}
 
+.user-profile-image{
+    width: 30%;
+    height: 100%;
+    pointer-events: none;
+
+}
+.user-profile-image img{
+    width: 100%;
+    height: 100%;
+
+}
+.user-profile-info{
+    pointer-events: none;
+    opacity: 0.2;
+}
+.user-profile-preferences{
+    pointer-events: none;
+    opacity: 0.2;
+}
+.password-popup{
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-sizing: content-box;
+    padding: 50px;
+}
+.show-edit{
+    pointer-events: all;
+    opacity: 1;
+}
+.hide-edit{
+    display: none;
+}
+#hidden{
+    width: auto;
+}
+
+
+/* Guest User */
+.guest-user-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.guest-user-card{
+    display: flex;
+    justify-content: center;
+    /* height: 600px; */
+    height: max-content;
+    width: 600px;
+    background-color: #fff;
+}
+.guest-user-image{
+    /* height: 500px; */
+    /* width: 50%; */
+}
+.guest-user-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.guest-user-content{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.user-buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.user-buttons button{
+    padding: 5px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.back-btn{
+    display: flex;
+    margin-right: 20px;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.back-btn img{
+    height: 15px;
+    width: 15px;
+}
 @media screen and (max-width:1050px){
     .feed-container{
         justify-content: center;
         margin: 10px 50px;
     }
+    /* .user-profile-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: fit-content;
+        height: 70vh;
+    } */
 }

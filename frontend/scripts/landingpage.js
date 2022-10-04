@@ -83,6 +83,8 @@ function login(){
         const user = res.data.user
         localStorage.setItem('userID', parseInt(user.id))
         localStorage.setItem('token', authorisation.token)
+        window.location.replace('feed.html')
+
     })
     .catch(e=>{
         console.log(e);
@@ -121,6 +123,9 @@ function update(){
     const form = new FormData()
     form.append('profile_picture',image64)
     form.append('bio',bio.value)
+    form.append('hidden',0)
+    form.append('password','')
+
     axios.post(`${baseURL}/auth/update/${userID}`,form,{
         headers: {
           'Authorization': `Bearer ${token}`
@@ -128,6 +133,7 @@ function update(){
     })
     .then(res=>{
         console.log(res)
+        window.location.replace('feed.html')
     })
     .catch(e=>{
         console.log(e)
