@@ -355,6 +355,44 @@ a:hover{
     height: 15px;
     width: 15px;
 }
+
+
+/* Chat Page */
+
+.chat-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.chat-content{
+    width: 600px;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
+.message-box{
+    background-color: #84a98c;
+    width: 50%;
+    padding: 5px 2px;
+    margin: 5px 0;
+}
+
+.user-message{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-input{
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+}
+.message-input input{
+    flex-grow: 1;
+}
+
+
 @media screen and (max-width:1050px){
     .feed-container{
         justify-content: center;
