@@ -307,13 +307,42 @@ a:hover{
 }
 
 
+/* Guest User */
+.guest-user-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.guest-user-card{
+    display: flex;
+    justify-content: center;
+    /* height: 600px; */
+    height: max-content;
+    width: 600px;
+}
+.guest-user-image{
+    /* height: 500px; */
+    /* width: 50%; */
+}
+.guest-user-image img{
+    width: 100%;
+    height: 100%;
+}
 
-
-
-
-
-
-
+.guest-user-content{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.user-buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.user-buttons button{
+    padding: 5px 15px;
+    border-radius: 50px;
+}
 
 @media screen and (max-width:1050px){
     .feed-container{
