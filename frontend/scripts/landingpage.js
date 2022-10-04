@@ -133,7 +133,7 @@ function update(){
     })
     .then(res=>{
         console.log(res.data)
-        // window.location.replace('feed.html')
+        window.location.replace('feed.html')
     })
     .catch(e=>{
         console.log(e)

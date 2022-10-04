@@ -107,9 +107,7 @@ class AuthController extends Controller
         // if(!isset($request->password) || empty($request->password)){
         //     $user->password = $user->password;
         // }else $user->password = bcrypt($request->password);
-        return response()->json([
-            'DATA' => $request->password
-        ]); 
+
         if($request->password == null){
             $user->password = $user->password;
         }else $user->password = bcrypt($request->password);

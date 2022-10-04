@@ -199,6 +199,9 @@ axios.get(`${baseURL}/feed/${localStorage.getItem('userID')}`)
                 })
                 messageBtn.addEventListener('click',()=>{
                     console.log('hello message')
+                    localStorage.setItem('guestID', parseInt(guestUser.id))
+                    window.open('chat.html', '_self')
+
                 })
             })
         })
