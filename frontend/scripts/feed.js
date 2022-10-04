@@ -13,14 +13,14 @@ userLogoutButton.addEventListener('click',()=>{
 const baseURL = 'http://localhost:8000/api'
 
 // ${localStorage.getItem(userID)}
-axios.get(`${baseURL}/feed/18`)
+axios.get(`${baseURL}/feed/${localStorage.getItem('userID')}`)
 .then(res=>{
     console.log(res.data.page_user)
     userProfileButton.src = res.data.page_user.profile_picture
     userProfileButton.addEventListener('click',()=>{
         localStorage.getItem('userID')
         localStorage.getItem('token')
-        // window.location.replace('index.html')
+        window.location.replace('profile.html')
     })
     // User cards
     for(let user of res.data.data){

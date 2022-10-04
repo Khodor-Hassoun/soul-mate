@@ -114,6 +114,8 @@ class AuthController extends Controller
         $user->preference = $request->preference ? $request->preference : $user->preference;
         $user->profile_picture = $request->profile_picture ? $request->profile_picture : $user->profile_picture;
         $user->bio = $request->bio ? $request->bio : $user->bio;
+        $user->first_name = $request->first_name ? $request->first_name : $user->first_name;
+        $user->surname = $request->surname ? $request->surname : $user->surname;
 
         
         if($user->save()){

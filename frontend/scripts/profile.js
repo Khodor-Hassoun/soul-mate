@@ -60,11 +60,11 @@ editProfileButton.addEventListener('click',()=>{
 signupBackBtn.addEventListener('click',()=>{
     passwPop.classList.remove('show')
 })
-axios.get(`${baseURL}/feed/18`)
+axios.get(`${baseURL}/feed/${parseInt(localStorage.getItem('userID'))}`)
 .then(res=>{
     const user = res.data.page_user
     firstName.value = user.first_name
-    surname.value = user.last_name
+    surname.value = user.surname
     email.value = user.email
     dob.value = user.dob
     userImageDisplay.src = user.profile_picture
@@ -72,9 +72,10 @@ axios.get(`${baseURL}/feed/18`)
     gender.value = user.gender
     locationUser.value = user.location
     userName.value = user.username
+    bio.value = user.bio
 })
 
-axios.get(`${baseURL}/profile/18`)
+axios.get(`${baseURL}/profile/${parseInt(localStorage.getItem('userID'))}`)
 .then(res=>{
     for(let user of res.data.data){
         console.log(user)
