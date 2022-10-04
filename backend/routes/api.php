@@ -36,7 +36,7 @@ Route::get('/view/{id}', [UserController::class, 'getUser']);
 Route::post('/like', [UserController::class, 'likeUser']);
 Route::post('/block', [UserController::class, 'blockUser']);
 Route::post('/message', [UserController::class, 'addMessage']);
-Route::get('/message/{id}', [UserController::class, 'getMessages']);
+Route::post('/message/{id}', [UserController::class, 'getMessages']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

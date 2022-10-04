@@ -359,16 +359,26 @@ a:hover{
 
 /* Chat Page */
 
+.chat-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .chat-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    background-color: black;
+    /* width: 600px; */
+
 }
 .chat-content{
-    width: 600px;
+    width: 700px;
     border-radius: 10px;
-    background-color: black;
 }
 .message-box{
     background-color: #84a98c;
