@@ -116,6 +116,7 @@ class AuthController extends Controller
         $user->bio = $request->bio ? $request->bio : $user->bio;
         $user->first_name = $request->first_name ? $request->first_name : $user->first_name;
         $user->surname = $request->surname ? $request->surname : $user->surname;
+        $user->hidden = $request->hidden;
 
         
         if($user->save()){

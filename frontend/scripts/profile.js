@@ -22,18 +22,10 @@ const ishidden = document.getElementById('hidden')
 const hiddenDiv = document.querySelector('.hidden-div')
 const profileEditBtn = document.getElementById('profile-edit')
 let image64 = ''
-
+let notHidden = 0
 const userPofileCon = document.querySelector('.user-profile-container')
 
-hiddenDiv.addEventListener('click',()=>{
-    if(ishidden.value == 1){
-        ishidden.value = 0
-        ishidden.checked = false
-    }else{
-        ishidden.value = 1
-        ishidden.checked = true
-    }
-})
+
 profilePic.addEventListener('change',()=>{
     const file = profilePic.files[0]
     const reader = new FileReader()
@@ -73,6 +65,10 @@ axios.get(`${baseURL}/feed/${parseInt(localStorage.getItem('userID'))}`)
     locationUser.value = user.location
     userName.value = user.username
     bio.value = user.bio
+    ishidden.value = user.hidden
+    if(ishidden.value == 0){
+        ishidden.checked = false
+    }else ishidden.checked = true
 })
 
 axios.get(`${baseURL}/profile/${parseInt(localStorage.getItem('userID'))}`)
@@ -135,7 +131,17 @@ axios.get(`${baseURL}/profile/${parseInt(localStorage.getItem('userID'))}`)
     }
 })
 
-
+hiddenDiv.addEventListener('click',()=>{
+    if(parseInt(ishidden.value) === 1){
+        ishidden.value = 0
+        ishidden.checked = false
+        notHidden = 0
+    }else{
+        ishidden.value = 1
+        ishidden.checked = true
+        notHidden = 1
+    }
+})
 // Update user
 function update(){
     const userID = parseInt(localStorage.getItem('userID'))
@@ -152,6 +158,7 @@ function update(){
     form.append('location',locationUser.value)
     form.append('profile_picture',image64)
     form.append('bio',bio.value)
+    form.append('hidden',notHidden)
     axios.post(`${baseURL}/auth/update/${userID}`,form,{
         headers: {
           'Authorization': `Bearer ${token}`
@@ -165,4 +172,8 @@ function update(){
     })
 }
 
-profileEditBtn.addEventListener('click', update)
+profileEditBtn.addEventListener('click', ()=>{
+    update()
+    userPofileCon.classList.add('hide-edit')
+
+})
