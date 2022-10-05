@@ -135,8 +135,6 @@ class UserController extends Controller
     function getMessageUsers($id){
         $messages = Chat::select('receiver_id')->distinct()
                     ->where('sender_id',$id)
-                    // ->where('receiver_id')->distinct()
-                    // ->distinct('receiver_id')->get()
         ->get()->toArray();
 
         $users = DB::table('users')
