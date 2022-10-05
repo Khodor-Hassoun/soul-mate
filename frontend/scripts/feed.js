@@ -2,6 +2,9 @@
 const userProfileButton = document.getElementById('user-profile-pic')
 const userChatButton = document.getElementById('user-chat-pic');
 const userLogoutButton = document.getElementById('user-logout-pic')
+userChatButton.addEventListener('click', ()=>{
+    window.open('chat.html', '_self')
+})
 
 // feed container 
 const feedContainer = document.querySelector('.feed-container')

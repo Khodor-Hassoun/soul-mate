@@ -118,16 +118,17 @@ class AuthController extends Controller
         $user->first_name = $request->first_name ? $request->first_name : $user->first_name;
         $user->surname = $request->surname ? $request->surname : $user->surname;
         $user->hidden = $request->hidden;
+        $user->profile_picture = $request->profile_picture ? $request->profile_picture : $user->profile_picture;
         
-        $image = $request->profile_picture;
-        $image = str_replace('data:image/png;base64,', '', $image);
-        $image = str_replace(' ', '+', $image);
-        $data = base64_decode($image);
-        $imageLocation = uniqid() . '.png';
-        $file = public_path('images')."/images".$imageLocation;
-        $imagesToSave = '/backend/public/images'.$imageLocation;
-        $user->profile_picture = $request->profile_picture ? $imagesToSave : $user->profile_picture;
-        file_put_contents($file, $data);
+        // $image = $request->profile_picture;
+        // $image = str_replace('data:image/png;base64,', '', $image);
+        // $image = str_replace(' ', '+', $image);
+        // $data = base64_decode($image);
+        // $imageLocation = uniqid() . '.png';
+        // $file = public_path('images')."/images".'/'.$imageLocation;
+        // $imagesToSave = '../backend/public/images/'.$imageLocation;
+        // $user->profile_picture = $request->profile_picture ? $imagesToSave : $user->profile_picture;
+        // file_put_contents($file, $data);
 
 
         if($user->save()){
