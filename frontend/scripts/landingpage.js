@@ -36,7 +36,7 @@ profilePic.addEventListener('change',()=>{
     const reader = new FileReader()
 
     reader.addEventListener('load',()=>{
-        console.log(reader.result)
+        // console.log(reader.result)
         profilePicDiv.src= `${reader.result}`
         image64 = reader.result
     })
@@ -124,7 +124,7 @@ function update(){
     form.append('profile_picture',image64)
     form.append('bio',bio.value)
     form.append('hidden',0)
-    form.append('password',null)
+    // form.append('password',null)
 
     axios.post(`${baseURL}/auth/update/${userID}`,form,{
         headers: {

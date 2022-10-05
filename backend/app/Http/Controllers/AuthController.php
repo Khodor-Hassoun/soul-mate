@@ -55,7 +55,7 @@ class AuthController extends Controller
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
             'gender' =>$request->gender,
             'preference' =>  $request->preference,
             'dob' => $request->dob,
@@ -99,17 +99,13 @@ class AuthController extends Controller
 
     public function update(Request $request, $id){
         $user = User::find($id);
-        // if(!isset($user->password) || empty($user->password)){
-        //     $user->password = $user->password;
-        // }else{
-        //     $user->password = bcrypt($request->password);
-        // }
-        // if(!isset($request->password) || empty($request->password)){
-        //     $user->password = $user->password;
-        // }else $user->password = bcrypt($request->password);
 
-        if($request->password == null){
+        if($request->password == null || $request->password == ''){
             $user->password = $user->password;
+            // return response()->json([
+            //     'password' => 'empty password',
+
+            // ]);
         }else $user->password = bcrypt($request->password);
         
         $user->username = $request->username ? $request->username : $user->username;
@@ -118,13 +114,22 @@ class AuthController extends Controller
         $user->location = $request->location ? $request->location : $user->location;
         $user->dob = $request->dob ? $request->dob : $user->dob;
         $user->preference = $request->preference ? $request->preference : $user->preference;
-        $user->profile_picture = $request->profile_picture ? $request->profile_picture : $user->profile_picture;
         $user->bio = $request->bio ? $request->bio : $user->bio;
         $user->first_name = $request->first_name ? $request->first_name : $user->first_name;
         $user->surname = $request->surname ? $request->surname : $user->surname;
         $user->hidden = $request->hidden;
-
         
+        $image = $request->profile_picture;
+        $image = str_replace('data:image/png;base64,', '', $image);
+        $image = str_replace(' ', '+', $image);
+        $data = base64_decode($image);
+        $imageLocation = uniqid() . '.png';
+        $file = public_path('images')."/images".$imageLocation;
+        $imagesToSave = '/backend/public/images'.$imageLocation;
+        $user->profile_picture = $request->profile_picture ? $imagesToSave : $user->profile_picture;
+        file_put_contents($file, $data);
+
+
         if($user->save()){
             $token = Auth::login($user);
             return response()->json([
