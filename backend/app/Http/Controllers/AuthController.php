@@ -55,7 +55,7 @@ class AuthController extends Controller
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
             'gender' =>$request->gender,
             'preference' =>  $request->preference,
             'dob' => $request->dob,
@@ -102,6 +102,10 @@ class AuthController extends Controller
 
         if($request->password == null || $request->password == ''){
             $user->password = $user->password;
+            // return response()->json([
+            //     'password' => 'empty password',
+
+            // ]);
         }else $user->password = bcrypt($request->password);
         
         $user->username = $request->username ? $request->username : $user->username;
