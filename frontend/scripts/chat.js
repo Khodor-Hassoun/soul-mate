@@ -9,8 +9,6 @@ const baseURL = 'http://localhost:8000/api'
 
 axios.get(`${baseURL}/chat/${parseInt(localStorage.getItem('userID'))}`)
 .then(res =>{
-    console.log('HELLLLLLLL')
-    console.log(res.data.users)
     const guests = res.data.users
     for(let guest of guests){
         const guestTab = document.createElement('div')
