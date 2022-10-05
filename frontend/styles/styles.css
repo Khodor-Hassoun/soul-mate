@@ -372,27 +372,29 @@ a:hover{
     align-items: center;
 }
 
-.chat-container{
+/* .chat-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
     background-color: black;
-    /* width: 600px; */
 
-}
+} */
 .chat-content{
-    width: 700px;
+    /* width: 700px; */
     border-radius: 10px;
 }
 .message-box{
     background-color: #84a98c;
+    border-radius: 50px;
     width: 50%;
     padding: 5px 2px;
     margin: 5px 0;
 }
-
+.message-box p{
+    padding: 0 5px;
+}
 .user-message{
     display: flex;
     justify-content: flex-end;
@@ -401,13 +403,39 @@ a:hover{
 .message-input{
     display: flex;
     width: 100%;
-    margin: 10px 0;
-    padding: 5px;
+    /* margin: 10px 0;
+    padding: 5px; */
 }
 .message-input input{
     flex-grow: 1;
 }
 
+.chat-body-container{
+    display: flex;
+    width: 100%;
+
+}
+.chat-sidebar{
+    width: 220px;
+    background-color: #fd326c;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.guest-tab{
+    padding: 8px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+.chat-container{
+    background-color: #edf2f4;
+    flex-grow: 1;
+    padding: 0 20px;
+}
 
 @media screen and (max-width:1050px){
     .feed-container{
